@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:regular,500,600,700,800,900" rel="stylesheet" />
+</head>
+<body>
+    <section id="app" class="section-cart">
+        <div class="section-cart__container">
+            <header class="section-cart__header">
+                <div class="section-cart__title">Корзина товаров</div>
+            </header>
+            <div class="section-cart__body">
+                <section class="cart">
+                    <div class="cart__header">
+                        <div class="cart__header__name">Ваши товары</div>
+                    </div>
+                    <div id="cart__items" class="cart__items" v-for="item in cartItems">
+                        <div class="cart__items item">
+                            <div class="item__image">
+                                <img src="images/img1.jpg" alt="">
+                            </div>
+                            <div class="item__title">{{ item.title }}</div>
+                            <div class="item__count count">
+                                <div class="count__minus count__btn" @click="decItemCount(item)">-</div>
+                                <div class="count__num">{{ item.count }}</div>
+                                <div class="count__plus count__btn" @click="incItemCount(item)">+</div>
+                            </div>
+                            <div  class="item__price">{{ item.price }} руб</div>
+                            <div class="item__close">
+                                <img @click="deleteItem(item)" src="images/close-icon.svg" alt="">
+                            </div>
+                        </div>
+                    </div>
+                        
+                    <div class="cart__footer">
+                        <div class="cart__footer__title"> Всего: {{ itemTotal }} шт</div>
+                        <div class="cart__footer__price">Общая цена: {{  calcPrice }} руб</div>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+</body>
+</html>
